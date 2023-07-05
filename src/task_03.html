@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Plan - Task #3</title>
+    <style>
+        .login-form {
+            display: block;
+            margin: 0 auto;
+            margin-top: 200px;
+            width: 500px;
+            height: 200px;
+            border: solid 1px #ccc;
+            border-radius: 5px;
+        }
+
+        .login-form > input {
+            width: 80%;
+            height: 40px;
+            margin: 10px auto;
+            display: block;
+        }
+
+        .login-form > button {
+            display: block;
+            margin: 10px auto;
+            width: 40%;
+            height: 30px;
+            background-color: #4172e4;
+            color: #fff;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .login-form > .feedback-text {
+            color: red;
+            text-align: center;
+            height: 20px;
+            line-height: 20px;
+        }
+    </style>
+
+    <script>
+
+        function onPageLoad() {
+            let loginForm = document.getElementById('login-form')
+            let emailInput = document.getElementById('email')
+            let passwordInput = document.getElementById('password')
+            let feedbackText = document.getElementById('feedback-text')
+            loginForm.addEventListener('submit', validateForm)
+
+            function validateForm(event) {
+                event.preventDefault()
+                let email = emailInput.value
+                let password = passwordInput.value
+                
+                if (email === 'pavleskaai@gmail.com' && password === 'password') {
+                    feedbackText.style.color = 'green'
+                    feedbackText.innerText = 'Uspesno se logira'
+                } else {
+                    feedbackText.style.color = 'red'
+                    feedbackText.innerText = 'Pogresen mail i password'
+                }
+            }
+        }
+        window.addEventListener('load', event => onPageLoad())
+
+    </script>
+
+</head>
+<body>
+    <form id="login-form" class="login-form">
+        <p id="feedback-text" class="feedback-text"></p>
+        <input minlength="4" id="email" name="email" type="email" />
+        <input minlength="4" id="password" name="password" type="password" />
+        <button type="submit">Logiraj se</button>
+    </form>
+</body>
+</html>
