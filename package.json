@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "On-boarding task solutions - Code Desk",
   "scripts": {
-    "start": "parcel src/*.html --dist-dir build --open --port 3000"
+    "start": "parcel src/index.html --dist-dir build --open --port 3000"
   },
   "author": {
     "name": "Ivana Pavleska"

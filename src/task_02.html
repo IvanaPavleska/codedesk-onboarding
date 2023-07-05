@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Plan - Task #2</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+        }
+    </style>
+    <script>
+        function onPageLoad() {
+            let buttonMagic = document.getElementById('magic')
+            let buttonReset = document.getElementById('reset')
+            let box = document.getElementById('box')
+            let boxPosition = 0
+            let boxDirection = 1
+            let speed = 5
+
+            let isPaused = true
+
+            buttonMagic.addEventListener('click', event => onMagicClick())
+            buttonReset.addEventListener('click', event => onResetClick())
+
+            buttonMagic.innerText = 'Start'
+
+            function onMagicClick() {
+                if (isPaused) {
+                    buttonMagic.innerText = 'Pause'
+                    isPaused = false
+                    startAnimation()
+                } else {
+                    buttonMagic.innerText = 'Start'
+                    isPaused = true
+                    stopAnimation()
+                }
+            }
+
+            function onResetClick() {
+                console.log('pozicijata se resetira')
+                boxPosition = 0
+            }
+
+            function startAnimation() {
+                console.log('animacijata zapocnuva')
+                move()
+            }
+
+            function stopAnimation() {
+                console.log('animacijata stopira')
+            }
+
+            function move() {
+                
+                if (isPaused) {
+                    return
+                }
+
+                boxPosition += boxDirection * speed
+
+                if (boxPosition > 200) {
+                    boxDirection = -1
+                }
+                if (boxPosition < 0) {
+                    boxDirection = 1
+                }
+
+                box.style.transform = `translateX(${boxPosition}px)`
+
+                requestAnimationFrame(move)
+            }
+
+        }
+        
+        window.addEventListener('load', (event) => onPageLoad())
+
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+    <button id="magic"></button>
+    <button id="reset">reset</button>
+</body>
+</html>
